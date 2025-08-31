@@ -17,14 +17,26 @@ header .logo{font-family:'Playfair Display',serif; font-size:1.8rem; font-weight
 header nav a{margin-left:25px; font-weight:600; transition:color 0.3s;}
 header nav a:hover{color:#b8902c;}
 header nav{display:flex; gap:15px;}
-/* Mobile menu */
 .menu-toggle{display:none; font-size:1.8rem; cursor:pointer;}
-nav.mobile-hide{display:flex;}
+
+/* Mobile menu */
 @media(max-width:768px){
-  nav{display:none; flex-direction:column; background:#fff; position:absolute; top:60px; right:0; width:200px; box-shadow:0 2px 8px rgba(0,0,0,0.2);}
-  nav.mobile-show{display:flex;}
   .menu-toggle{display:block;}
-  nav a{margin:10px 0; padding:10px; border-bottom:1px solid #eee;}
+  header nav{
+    position:fixed;
+    top:60px;
+    right:-250px;
+    width:200px;
+    height:calc(100vh - 60px);
+    background:#fff;
+    flex-direction:column;
+    padding:20px;
+    box-shadow:-2px 0 10px rgba(0,0,0,0.2);
+    transition:right 0.3s ease-in-out;
+    z-index:1000;
+  }
+  header nav.mobile-show{right:0;}
+  header nav a{margin:10px 0; padding:10px; border-bottom:1px solid #eee;}
 }
 
 /* Hero */
@@ -116,7 +128,6 @@ footer div{margin-bottom:20px;}
   </div>
 </section>
 
-<!-- Gallery -->
 <section class="gallery" id="gallery">
   <img src="https://picsum.photos/id/1005/800/600" alt="Gallery 1">
   <img src="https://picsum.photos/id/1006/800/600" alt="Gallery 2">
@@ -124,7 +135,6 @@ footer div{margin-bottom:20px;}
   <img src="https://picsum.photos/id/1010/800/600" alt="Gallery 4">
 </section>
 
-<!-- Services -->
 <section class="services" id="services">
   <h2>Our Services</h2>
   <div class="service-cards">
@@ -135,7 +145,6 @@ footer div{margin-bottom:20px;}
   </div>
 </section>
 
-<!-- Testimonials -->
 <section class="testimonials" id="testimonials">
   <h2>What Our Clients Say</h2>
   <div class="testimonial-slider-wrapper">
@@ -147,36 +156,19 @@ footer div{margin-bottom:20px;}
   </div>
 </section>
 
-<!-- Team Carousel -->
 <section class="team" id="team">
   <h2>Meet Our Team</h2>
   <div class="team-carousel-wrapper">
     <div class="team-carousel">
-     <div class="member"><img src="https://picsum.photos/id/1011/200/200"><h4>Raja Kumar</h4><p>Camera Man</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1011/200/200"><h4>Raja Kumar</h4><p>Camera Man</p></div>
       <div class="member"><img src="https://picsum.photos/id/1012/200/200"><h4>Vikram Patel</h4><p>Camera Man</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1013/200/200"><h4>Arjun Singh</h4><p>Camera Man</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1014/200/200"><h4>Suresh Mehta</h4><p>Camera Man</p></div>
-      <!-- Editors -->
       <div class="member"><img src="https://picsum.photos/id/1015/200/200"><h4>Anita Singh</h4><p>Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1016/200/200"><h4>Meera Joshi</h4><p>Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1017/200/200"><h4>Sonia Verma</h4><p>Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1018/200/200"><h4>Ramesh Sharma</h4><p>Editor</p></div>
-      <!-- Video Editors -->
       <div class="member"><img src="https://picsum.photos/id/1019/200/200"><h4>Kavita Rao</h4><p>Video Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1020/200/200"><h4>Rahul Gupta</h4><p>Video Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1021/200/200"><h4>Priya Nair</h4><p>Video Editor</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1022/200/200"><h4>Amit Desai</h4><p>Video Editor</p></div>
-      <!-- Video Camera Operators -->
       <div class="member"><img src="https://picsum.photos/id/1023/200/200"><h4>Nikhil Joshi</h4><p>Video Camera Operator</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1024/200/200"><h4>Sanjay Rao</h4><p>Video Camera Operator</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1025/200/200"><h4>Ritika Sharma</h4><p>Video Camera Operator</p></div>
-      <div class="member"><img src="https://picsum.photos/id/1026/200/200"><h4>Manish Kapoor</h4><p>Video Camera Operator</p></div>
-    </div>
     </div>
   </div>
 </section>
 
-<!-- Feedback -->
 <section class="feedback" id="feedback">
   <h2>Give Your Feedback</h2>
   <form id="feedbackForm">
@@ -187,7 +179,6 @@ footer div{margin-bottom:20px;}
   </form>
 </section>
 
-<!-- Footer -->
 <footer>
   <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; text-align:center; gap:20px;">
     <div style="flex:1; min-width:200px;">
@@ -213,32 +204,35 @@ footer div{margin-bottom:20px;}
 </footer>
 
 <script>
-  // Mobile menu toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('header nav');
-  menuToggle.addEventListener('click', ()=>{nav.classList.toggle('mobile-show');});
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('header nav');
+menuToggle.addEventListener('click', () => nav.classList.toggle('mobile-show'));
+document.addEventListener('click', (e) => {
+  if(!nav.contains(e.target) && !menuToggle.contains(e.target)){
+    nav.classList.remove('mobile-show');
+  }
+});
 
-  // Testimonial slider
-  const slider = document.getElementById('testimonialSlider');
-  let index = 0;
-  setInterval(() => {
-    index = (index + 1) % slider.children.length;
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }, 4000);
+// Testimonial slider
+const slider = document.getElementById('testimonialSlider');
+let index = 0;
+setInterval(() => {
+  index = (index + 1) % slider.children.length;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}, 4000);
 
-  // Feedback form
-  const feedbackList = [];
-  document.getElementById('feedbackForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    feedbackList.push({name,email,message});
-    alert('Thank you for your feedback!');
-    this.reset();
-    console.log(feedbackList);
-  });
+// Feedback form
+const feedbackList = [];
+document.getElementById('feedbackForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  feedbackList.push({name,email,message});
+  alert('Thank you for your feedback!');
+  this.reset();
+  console.log(feedbackList);
+});
 </script>
-
 </body>
 </html>
