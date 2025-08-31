@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raja Studio - Professional Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+*{margin:0; padding:0; box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif; background:#fff; scroll-behavior:smooth;}
+a{text-decoration:none; color:inherit;}
+
+/* Header */
+header{position:fixed; width:100%; top:0; left:0; background:rgba(255,255,255,0.95); display:flex; justify-content:space-between; align-items:center; padding:15px 30px; box-shadow:0 2px 8px rgba(0,0,0,0.1); z-index:100;}
+header .logo{font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:#D4AF37;}
+header nav a{margin-left:25px; font-weight:600; transition:color 0.3s;}
+header nav a:hover{color:#b8902c;}
+header nav{display:flex; gap:15px;}
+/* Mobile menu */
+.menu-toggle{display:none; font-size:1.8rem; cursor:pointer;}
+nav.mobile-hide{display:flex;}
+@media(max-width:768px){
+  nav{display:none; flex-direction:column; background:#fff; position:absolute; top:60px; right:0; width:200px; box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+  nav.mobile-show{display:flex;}
+  .menu-toggle{display:block;}
+  nav a{margin:10px 0; padding:10px; border-bottom:1px solid #eee;}
+}
+
+/* Hero */
+.hero{position:relative; height:80vh; overflow:hidden; margin-top:60px;}
+.hero img{width:100%; height:100%; object-fit:cover; position:absolute; animation:fade 12s infinite;}
+.hero img:nth-child(2){animation-delay:4s;}
+.hero img:nth-child(3){animation-delay:8s;}
+@keyframes fade{0%,33%{opacity:1;}33.01%,66%{opacity:0;}66.01%,100%{opacity:1;}}
+.hero-content{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#fff; z-index:2; padding:0 20px;}
+.hero-content h1{font-family:'Playfair Display',serif; font-size:3rem; margin-bottom:15px;}
+.hero-content p{font-size:1.1rem; margin-bottom:20px;}
+.btn{padding:12px 30px; background:#D4AF37; color:#fff; font-weight:700; border:none; border-radius:5px; cursor:pointer; transition:all 0.3s;}
+.btn:hover{background:#b8902c; transform:scale(1.05);}
+
+/* Gallery */
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; padding:50px 20px;}
+.gallery img{width:100%; height:200px; object-fit:cover; border-radius:10px; transition:transform 0.5s, box-shadow 0.5s;}
+.gallery img:hover{transform:scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.3);}
+
+/* Services */
+.services{padding:50px 20px; background:#f9f9f9; text-align:center;}
+.services h2{font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;}
+.service-cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px;}
+.service-card{background:#fff; padding:20px; border-radius:10px; transition:transform 0.4s, box-shadow 0.4s;}
+.service-card:hover{transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+.service-card h3{margin-bottom:10px;}
+.service-card p{color:#555; font-size:0.95rem;}
+
+/* Testimonials */
+.testimonials{padding:50px 20px; text-align:center; background:#f5f5f5;}
+.testimonials h2{font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;}
+.testimonial-slider-wrapper{max-width:700px; margin:0 auto; overflow:hidden;}
+.testimonial-slider{display:flex; transition:transform 0.5s ease-in-out;}
+.testimonial{min-width:100%; padding:20px; box-sizing:border-box; text-align:center;}
+.testimonial p{font-style:italic; margin-bottom:10px;}
+.testimonial h4{font-weight:700;}
+
+/* Team Carousel */
+.team{padding:50px 20px; text-align:center; background:#f9f9f9;}
+.team h2{font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;}
+.team-carousel-wrapper{overflow-x:auto; scroll-behavior:smooth; padding-bottom:10px;}
+.team-carousel{display:flex; gap:15px; padding:10px;}
+.member{flex:0 0 180px; background:#fff; border-radius:10px; padding:10px; text-align:center; transition:transform 0.3s, box-shadow 0.3s;}
+.member img{width:160px; height:160px; object-fit:cover; border-radius:10px; margin-bottom:10px;}
+.member h4{margin-bottom:5px; font-size:1rem;}
+.member p{color:#555; font-size:0.85rem;}
+.team-carousel::-webkit-scrollbar{height:8px;}
+.team-carousel::-webkit-scrollbar-thumb{background:#D4AF37; border-radius:5px;}
+.team-carousel::-webkit-scrollbar-track{background:#eee; border-radius:5px;}
+
+/* Feedback */
+.feedback{padding:50px 20px; text-align:center;}
+.feedback h2{font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;}
+.feedback form{max-width:400px; margin:0 auto; display:flex; flex-direction:column;}
+.feedback input, .feedback textarea{padding:10px; margin-bottom:12px; border-radius:5px; border:1px solid #ccc; font-size:0.95rem;}
+.feedback button{padding:10px 20px; background:#D4AF37; color:#fff; font-weight:700; border:none; border-radius:5px; cursor:pointer; transition:all 0.3s;}
+.feedback button:hover{background:#b8902c;}
+
+/* Footer */
+footer{background:#111; color:#fff; padding:50px 20px;}
+footer a{color:#D4AF37;}
+footer .social a{margin:0 10px; color:#fff; font-size:18px; transition:0.3s;}
+footer .social a:hover{color:#D4AF37;}
+footer div{margin-bottom:20px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Raja Studio</div>
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  <nav class="mobile-hide">
+    <a href="#gallery">Gallery</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#team">Team</a>
+    <a href="#feedback">Feedback</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="https://picsum.photos/id/1011/1950/1080" alt="Hero 1">
+  <img src="https://picsum.photos/id/1012/1950/1080" alt="Hero 2">
+  <img src="https://picsum.photos/id/1013/1950/1080" alt="Hero 3">
+  <div class="hero-content">
+    <h1>Capture Your Moments</h1>
+    <p>Professional Photography for Every Occasion</p>
+    <button class="btn">Book a Session</button>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery" id="gallery">
+  <img src="https://picsum.photos/id/1005/800/600" alt="Gallery 1">
+  <img src="https://picsum.photos/id/1006/800/600" alt="Gallery 2">
+  <img src="https://picsum.photos/id/1008/800/600" alt="Gallery 3">
+  <img src="https://picsum.photos/id/1010/800/600" alt="Gallery 4">
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <h2>Our Services</h2>
+  <div class="service-cards">
+    <div class="service-card"><h3>Wedding Photography</h3><p>Capturing your special day with elegance.</p></div>
+    <div class="service-card"><h3>Portraits</h3><p>Professional and artistic portrait sessions.</p></div>
+    <div class="service-card"><h3>Events</h3><p>Corporate and private events coverage.</p></div>
+    <div class="service-card"><h3>Product Photography</h3><p>High-quality product images for e-commerce.</p></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-slider-wrapper">
+    <div class="testimonial-slider" id="testimonialSlider">
+      <div class="testimonial"><p>"Amazing photography! The team captured every moment perfectly."</p><h4>- Sarah M.</h4></div>
+      <div class="testimonial"><p>"Highly professional and creative. Loved the portraits!"</p><h4>- John D.</h4></div>
+      <div class="testimonial"><p>"Exceptional service and stunning wedding photos."</p><h4>- Emily R.</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Carousel -->
+<section class="team" id="team">
+  <h2>Meet Our Team</h2>
+  <div class="team-carousel-wrapper">
+    <div class="team-carousel">
+     <div class="member"><img src="https://picsum.photos/id/1011/200/200"><h4>Raja Kumar</h4><p>Camera Man</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1012/200/200"><h4>Vikram Patel</h4><p>Camera Man</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1013/200/200"><h4>Arjun Singh</h4><p>Camera Man</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1014/200/200"><h4>Suresh Mehta</h4><p>Camera Man</p></div>
+      <!-- Editors -->
+      <div class="member"><img src="https://picsum.photos/id/1015/200/200"><h4>Anita Singh</h4><p>Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1016/200/200"><h4>Meera Joshi</h4><p>Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1017/200/200"><h4>Sonia Verma</h4><p>Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1018/200/200"><h4>Ramesh Sharma</h4><p>Editor</p></div>
+      <!-- Video Editors -->
+      <div class="member"><img src="https://picsum.photos/id/1019/200/200"><h4>Kavita Rao</h4><p>Video Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1020/200/200"><h4>Rahul Gupta</h4><p>Video Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1021/200/200"><h4>Priya Nair</h4><p>Video Editor</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1022/200/200"><h4>Amit Desai</h4><p>Video Editor</p></div>
+      <!-- Video Camera Operators -->
+      <div class="member"><img src="https://picsum.photos/id/1023/200/200"><h4>Nikhil Joshi</h4><p>Video Camera Operator</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1024/200/200"><h4>Sanjay Rao</h4><p>Video Camera Operator</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1025/200/200"><h4>Ritika Sharma</h4><p>Video Camera Operator</p></div>
+      <div class="member"><img src="https://picsum.photos/id/1026/200/200"><h4>Manish Kapoor</h4><p>Video Camera Operator</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feedback -->
+<section class="feedback" id="feedback">
+  <h2>Give Your Feedback</h2>
+  <form id="feedbackForm">
+    <input type="text" placeholder="Your Name" id="name" required>
+    <input type="email" placeholder="Your Email" id="email" required>
+    <textarea placeholder="Your Feedback" id="message" rows="5" required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; text-align:center; gap:20px;">
+    <div style="flex:1; min-width:200px;">
+      <h3 style="font-family:'Playfair Display', serif; font-size:1.8rem; color:#D4AF37; margin-bottom:10px;">Raja Studio</h3>
+      <p>Professional Photography for Every Occasion</p>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <h4 style="margin-bottom:10px; font-size:1.2rem;">Contact Us</h4>
+      <p>Email: <a href="mailto:info@rajastudio.com">info@rajastudio.com</a></p>
+      <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <h4 style="margin-bottom:10px; font-size:1.2rem;">Follow Us</h4>
+      <div class="social" style="display:flex; justify-content:center; gap:15px;">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:20px;">&copy; 2025 Raja Studio. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('header nav');
+  menuToggle.addEventListener('click', ()=>{nav.classList.toggle('mobile-show');});
+
+  // Testimonial slider
+  const slider = document.getElementById('testimonialSlider');
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % slider.children.length;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }, 4000);
+
+  // Feedback form
+  const feedbackList = [];
+  document.getElementById('feedbackForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    feedbackList.push({name,email,message});
+    alert('Thank you for your feedback!');
+    this.reset();
+    console.log(feedbackList);
+  });
+</script>
+
+</body>
+</html>
